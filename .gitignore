@@ -1,0 +1,18 @@
+# virtualenv / build
+.venv/
+wheels/
+__pycache__/
+*.pyc
+.pytest_cache/
+*.egg-info/
+
+# secrets — NEVER commit
+secrets.local.json
+.env
+.env.local
+
+# local artifacts
+dataset/expanded/
+*.log
+*.err
+runs/

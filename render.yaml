@@ -1,0 +1,15 @@
+services:
+  - type: web
+    name: vera-message-engine
+    runtime: python
+    plan: free # NOTE: free tier spins down after 15 min idle — see DEPLOY.md cold-start warning
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn bot.main:app --host 0.0.0.0 --port $PORT
+    healthCheckPath: /v1/healthz
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.11.9
+      # Set these in the Render dashboard (values from secrets.local.json — never commit them):
+      #   VERA_LLM_PROVIDER / VERA_LLM_MODEL / VERA_LLM_BASE_URL / VERA_LLM_API_KEY
+      #   VERA_TEAM_NAME / VERA_TEAM_MEMBERS / VERA_CONTACT_EMAIL
+      # Without a key the bot runs fully deterministic (scoring-capable).

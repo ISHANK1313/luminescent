@@ -1,0 +1,7 @@
+# Vera Message Engine — pinned to the versions verified by the local test suite (Python 3.11)
+fastapi==0.141.1
+uvicorn==0.52.4
+
+# Test/dev dependencies (fastapi.testclient needs httpx; run: python -m pytest tests -q)
+httpx==0.28.1
+pytest==9.1.1
